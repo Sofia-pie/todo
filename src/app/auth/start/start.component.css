@@ -1,0 +1,6 @@
+.img {
+  background: url("src/assets/img/Фото.png");
+  border-radius: 0px 150px;
+  background-position: center;
+  background-size: cover;
+}

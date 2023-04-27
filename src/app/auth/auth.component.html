@@ -1,0 +1,13 @@
+<div class="flex items-center h-screen p-16 md:flex-row flex-col">
+	<div class="basis-2/3">
+		<h1 class="title">Organize your life right now</h1>
+		<p class="text w-9/12">Become focused, organized, and calm with “project name”. Add your tasks.
+			Organize your life. Achieve more every day.</p>
+
+		<button *ngIf="router.url=='/auth'" class="border-black border-2 rounded-xl py-4 px-9 my-4"
+			[routerLink]="['./sign-up']">Get Started</button>
+	</div>
+	<div class="grow h-full">
+		<router-outlet></router-outlet>
+	</div>
+</div>

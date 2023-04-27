@@ -1,0 +1,13 @@
+.title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 96px;
+  line-height: 112px;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: url("src/assets/img/Слоган.png");
+  background-position-x: center;
+  background-position-y: center;
+  color: transparent;
+}
