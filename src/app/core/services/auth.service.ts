@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from '../model/user';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,10 @@ export class AuthService {
   private baseUrl = 'http://localhost:8080/auth';
   currentUserId: number;
   constructor(private http: HttpClient, public router: Router) {}
+
+  register(user: User): Observable<any> {
+    return this.http.post(`${this.baseUrl}/register`, user);
+  }
 
   login(email: string, password: string) {
     return this.http
