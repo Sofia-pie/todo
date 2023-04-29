@@ -1,0 +1,94 @@
+<!-- <div class="space-y-2">
+		<div class="w-8 h-0.5 bg-gray-600"></div>
+		<div class="w-8 h-0.5 bg-gray-600"></div>
+		<div class="w-8 h-0.5 bg-gray-600"></div>
+	</div> -->
+
+<!-- Sidebar starts -->
+<!-- Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] -->
+<div class="w-64 absolute sm:relative border-r border-r-gray-300 bg-white sm:h-full flex-col  hidden sm:flex">
+	<div class="px-8 border-b border-b-gray-300 py-6 ">
+		<div class="flex mt-5 items-center cursor-pointer">
+			<img src="../../../assets/img/Rectangle 6.png" alt="" class="max-h-6 mr-2">
+			<span>Нотатки</span>
+		</div>
+		<div class="flex mt-5 items-center cursor-pointer">
+			<img src="../../../assets/img/Rectangle 17.png" alt="" class="max-h-6 mr-2">
+			<span>На сьогодні</span>
+		</div>
+		<div class="flex mt-5 items-center cursor-pointer">
+			<img src="../../../assets/img/Rectangle 8.png" alt="" class="max-h-6 mr-2">
+			<span>Заплановані</span>
+		</div>
+		<div class="flex mt-5 items-center cursor-pointer">
+			<img src="../../../assets/img/Rectangle 7.png" alt="" class="max-h-6 mr-2">
+			<span>Важливі</span>
+		</div>
+	</div>
+	<div class="px-8 mt-4">
+		<p *ngFor="let list of lists" class="mt-2">
+			{{list.name}}
+		</p>
+		<div class="flex items-center cursor-pointer">
+			<img src="../../../assets/img/Rectangle 18.png" alt="" class="max-h-5 mr-2">
+			<span>Створити список</span>
+		</div>
+
+	</div>
+</div>
+<!-- button -->
+<div
+	[ngClass]="'w-64 z-40 absolute bg-white shadow  flex-col h-full justify-between sm:hidden transition duration-150 ease-in-out ' + (isMenu ? 'transform translate-x-0' : 'transform -translate-x-full')">
+	<div class=" w-10 bg-white absolute right-0 mt-16 -mr-10 flex items-center shadow rounded-tr rounded-br justify-center cursor-pointer"
+		(click)="isMenuBtn()">
+		<div class="space-y-2">
+			<div class="w-8 h-0.5 bg-gray-600"></div>
+			<div class="w-8 h-0.5 bg-gray-600"></div>
+			<div class="w-8 h-0.5 bg-gray-600"></div>
+		</div>
+	</div>
+	<div [ngClass]="(isMenu ? 'block' : 'hidden') + ' h-10 w-10 bg-white absolute right-0 mt-16 -mr-10 flex items-center shadow rounded-tr rounded-br justify-center cursor-pointer text-black'"
+		(click)="isMenuBtn()">
+		<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="20" height="20"
+			viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+			stroke-linejoin="round">
+			<path stroke="none" d="M0 0h24v24H0z" />
+			<line x1="18" y1="6" x2="6" y2="18" />
+			<line x1="6" y1="6" x2="18" y2="18" />
+		</svg>
+	</div>
+	<div class="px-8">
+		<!-- toogle-menu -->
+		<div class="px-8 border-b border-b-gray-300 py-6 ">
+			<div class="flex mt-5 items-center cursor-pointer">
+				<img src="../../../assets/img/Rectangle 6.png" alt="" class="max-h-6 mr-2">
+				<span>Нотатки</span>
+			</div>
+			<div class="flex mt-5 items-center cursor-pointer">
+				<img src="../../../assets/img/Rectangle 17.png" alt="" class="max-h-6 mr-2">
+				<span>На сьогодні</span>
+			</div>
+			<div class="flex mt-5 items-center cursor-pointer">
+				<img src="../../../assets/img/Rectangle 8.png" alt="" class="max-h-6 mr-2">
+				<span>Заплановані</span>
+			</div>
+			<div class="flex mt-5 items-center cursor-pointer">
+				<img src="../../../assets/img/Rectangle 7.png" alt="" class="max-h-6 mr-2">
+				<span>Важливі</span>
+			</div>
+		</div>
+		<div class="px-8 mt-4">
+			<p *ngFor="let list of lists" class="mt-2">
+				{{list.name}}
+			</p>
+			<div class="flex items-center cursor-pointer">
+				<img src="../../../assets/img/Rectangle 18.png" alt="" class="max-h-5 mr-2">
+				<span>Створити список</span>
+			</div>
+
+
+
+		</div>
+
+	</div>
+	<!-- Sidebar ends -->
