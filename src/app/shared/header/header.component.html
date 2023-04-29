@@ -1,0 +1,19 @@
+<div class="flex justify-between items-center h-16 border border-b-gray-300 px-5">
+	<p>Logo</p>
+	<div class="w-3/12">
+		<input type="text" class="border border-gray-300 drop-shadow-md p-1 pl-8 rounded w-full" placeholder="Пошук">
+	</div>
+	<div class="basis-12 relative cursor-pointer " (click)="onDropdownClick()"><img
+			src="../../../assets/img/Іконка користувача.png">
+		<div *ngIf="showMenu" class="absolute bg-white border border-gray-300 right-2 top-14 rounded-b-lg w-max py-2">
+			<div class="border-b border-b-gray-300 flex px-3 pb-3">
+				<img src="../../../assets/img/Іконка користувача.png" class="basis-12 mr-2">
+				<div class="w-fit">
+					<p>{{user.name}}</p>
+					<p>{{user.email}}</p>
+				</div>
+			</div>
+			<p class="px-3 pt-2 cursor-pointer " (click)="onLogoutClick()">Вийти</p>
+		</div>
+	</div>
+</div>
