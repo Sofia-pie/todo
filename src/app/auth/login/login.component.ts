@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../core/services/user.service';
+
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 
@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     console.log('Email:', this.email);
     console.log('Password:', this.password);
-    this.authService.login(this.email, this.password);
-    // this.router.navigate(['/main']);
+    this.authService
+      .login(this.email, this.password)
+      .subscribe({ complete: () => this.router.navigate(['/main']) });
   }
 }

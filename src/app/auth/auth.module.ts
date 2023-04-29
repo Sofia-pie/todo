@@ -7,8 +7,9 @@ import { StartComponent } from './start/start.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthInterceptor } from '../core/interceptors/authconfig.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,13 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     RouterModule,
     HttpClientModule,
   ],
-  providers: [JwtHelperService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   exports: [AuthComponent],
 })
 export class AuthModule {}
