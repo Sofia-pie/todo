@@ -20,6 +20,6 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.authService
       .register(this.name, this.email, this.password)
-      .subscribe({ complete: () => this.router.navigate(['/login']) });
+      .subscribe(() => this.router.navigate(['/main']));
   }
 }

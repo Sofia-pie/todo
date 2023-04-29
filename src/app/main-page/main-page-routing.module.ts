@@ -20,8 +20,13 @@ const authRoutes: Routes = [
         data: { category: 'planned' },
       },
 
+      {
+        path: '',
+        pathMatch: 'full',
+        component: TasksComponent,
+        data: { category: 'notes' },
+      },
       { path: ':id', component: TasksComponent, data: { category: 'id' } },
-      { path: '', component: TasksComponent, data: { category: 'notes' } },
     ],
   },
 ];

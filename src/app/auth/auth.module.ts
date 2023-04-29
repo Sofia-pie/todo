@@ -25,13 +25,7 @@ import { AuthInterceptor } from '../core/interceptors/authconfig.interceptor';
     RouterModule,
     HttpClientModule,
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
-  ],
+  providers: [],
   exports: [AuthComponent],
 })
 export class AuthModule {}

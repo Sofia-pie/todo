@@ -1,33 +1,51 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../model/user';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { List } from '../model/list';
+import { ListService } from './list.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private baseUrl = 'http://localhost:8080';
-  currentUserId: number;
-  private token: string;
-  private user: any;
+  private currentUserId: number;
+
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(
     private http: HttpClient,
     public router: Router,
-    private jwtHelper: JwtHelperService
+    private jwtHelper: JwtHelperService,
+    private listService: ListService
   ) {}
 
   register(name: string, email: string, password: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/auth/register`, {
-      name,
-      email,
-      password,
-    });
+    localStorage.removeItem('access_token');
+    return this.http
+      .post(`${this.baseUrl}/auth/register`, {
+        name,
+        email,
+        password,
+      })
+      .pipe(
+        tap((res: any) => {
+          console.log(res.jwt_token);
+          localStorage.setItem('access_token', res.jwt_token);
+        }),
+        switchMap((res: any) => {
+          // Create a default list for the new user
+          let list: List = {
+            title: 'Нотатки',
+            user_id: res._id,
+            tasks: [],
+          };
+          return this.listService.createList(list).pipe(map(() => res));
+        })
+      );
   }
 
   login(email: string, password: string) {
@@ -52,15 +70,15 @@ export class AuthService {
     }
   }
 
-  getToken(): string {
-    if (!this.token) {
-      this.token = localStorage.getItem('access_token')!;
+  get token(): string | undefined {
+    if (localStorage.getItem('access_token')) {
+      return localStorage.getItem('access_token')!;
     }
-    return this.token;
+    return;
   }
 
   getUser(): Observable<any> {
-    const jwtToken = this.getToken();
+    const jwtToken = this.token!;
     const decodedToken = this.jwtHelper.decodeToken(jwtToken);
     const id = decodedToken.user_id;
     let api = `${this.baseUrl}/user/${id}`;
