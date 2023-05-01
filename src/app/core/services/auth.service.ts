@@ -12,7 +12,7 @@ import { ListService } from './list.service';
 })
 export class AuthService {
   private baseUrl = 'http://localhost:8080';
-  private currentUserId: number;
+  private currentUserId: string;
 
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 

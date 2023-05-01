@@ -1,10 +1,9 @@
 export interface Task {
-  _id?: number;
-  user_id: number;
+  _id?: string;
   title: string;
   due_date: Date;
-  completed: Boolean;
-  description: string;
+  completed: boolean;
+  description?: string;
   priority: number;
-  list_id: number;
+  list_id: string;
 }

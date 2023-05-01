@@ -1,0 +1,11 @@
+<div class="p-2 bg-gray-100 w-screen md:w-full h-full">
+	<h4 class="text-2xl">{{pageTitle}}</h4>
+	<div>
+		<ng-container *ngIf="currentList">
+			<app-create-tasks [listId]="currentList._id!" (createTask)="createTask($event)"></app-create-tasks>
+		</ng-container>
+		<div *ngFor="let task of tasks">
+			<p>{{task.title}}</p>
+		</div>
+	</div>
+</div>

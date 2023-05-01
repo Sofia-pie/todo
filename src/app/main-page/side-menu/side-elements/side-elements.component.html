@@ -1,5 +1,5 @@
 <div class="px-8 border-b border-b-gray-300 py-6 ">
-	<div class="flex mt-5 items-center cursor-pointer" [routerLink]="['./']">
+	<div class="flex mt-5 items-center cursor-pointer" [routerLink]="['./',notesId]">
 		<img src="../../../assets/img/Rectangle 6.png" alt="" class="max-h-6 mr-2">
 		<span>Нотатки</span>
 	</div>
@@ -19,8 +19,8 @@
 <div class=" mt-4">
 	<div *ngFor="let list of lists" class="mt-2 px-8" [routerLink]="['./',list._id]">
 		<div *ngIf="list.title != 'Нотатки'" class="flex justify-between items-center">
-			<p>{{list.title}}</p><img src="../../../../assets/img/bin.png" class="h-4 cursor-pointer"
-				(click)="onDeleteClick(list)">
+			<p class="cursor-pointer">{{list.title}}</p><img src="../../../../assets/img/bin.png"
+				class="h-4 cursor-pointer" (click)="onDeleteClick(list)">
 		</div>
 
 	</div>

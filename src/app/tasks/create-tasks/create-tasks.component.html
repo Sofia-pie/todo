@@ -1,0 +1,21 @@
+<form [formGroup]="taskForm" class="md:mx-20 mx-0  bg-white rounded-t-lg border border-gray-300  shadow-md"
+	(keydown.enter)="onEnter($event)">
+
+	<input type="text" formControlName="title" class="pl-10 py-4 w-full title-input border-b border-b-gray-200"
+		placeholder="Створити завдання">
+	<div class="flex items-center gap-4 flex-wrap mb-3">
+		<input type="date" class="m-4" formControlName="due_date">
+
+		<textarea cols="18" rows="1" class="border px-2 py-1 pl-10 border-gray-400 rounded-md comment"
+			placeholder="Додати коментар" formControlName="description"></textarea>
+		<label>
+			Пріоритет:
+			<select formControlName="priority" class="border px-2 py-1 border-gray-400 rounded-md">
+				<option value="3">Низький</option>
+				<option value="2">Середній</option>
+				<option value="1">Високий</option>
+			</select>
+		</label>
+	</div>
+</form>
+<div></div>

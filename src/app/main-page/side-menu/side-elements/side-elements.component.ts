@@ -15,11 +15,16 @@ export class SideElementsComponent implements OnInit {
   errorMessage: string = '';
   showComfirmDialog = false;
   currentList: List;
+  notesId: string;
 
   constructor(private listService: ListService) {}
 
   ngOnInit(): void {
-    this.listService.getLists().subscribe((l) => (this.lists = l));
+    this.listService.getLists().subscribe((l) => {
+      this.lists = l;
+      const notes = l.find((list) => list.title == 'Нотатки');
+      this.notesId = notes?._id!;
+    });
   }
 
   onCreateClick() {
@@ -49,7 +54,7 @@ export class SideElementsComponent implements OnInit {
     this.showComfirmDialog = true;
   }
 
-  deleteList(id: number) {
+  deleteList(id: string) {
     this.listService.deleteList(id).subscribe((res) => {
       this.lists = this.lists.filter((list) => list._id !== id);
       console.log(res.msg);

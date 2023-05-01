@@ -1,0 +1,19 @@
+.title-input {
+  background-image: url("src/assets/img/Rectangle 18.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-y: center;
+  background-position-x: 0.3rem;
+  background-position-x: 1rem;
+  background-size: 1.2rem;
+}
+
+.comment {
+  background-image: url("src/assets/img/comment.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-y: center;
+  background-position-x: 0.3rem;
+  background-position-x: 1rem;
+  background-size: 1.2rem;
+}

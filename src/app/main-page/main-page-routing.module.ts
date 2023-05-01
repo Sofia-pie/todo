@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainPageComponent } from './main-page.component';
-import { TasksComponent } from './tasks/tasks.component';
+import { TasksComponent } from '../tasks/tasks.component';
 
 const authRoutes: Routes = [
   {
@@ -11,20 +11,23 @@ const authRoutes: Routes = [
       {
         path: 'important',
         component: TasksComponent,
-        data: { category: 'important' },
+        data: { category: 'Важливі' },
       },
-      { path: 'today', component: TasksComponent, data: { category: 'today' } },
+      {
+        path: 'today',
+        component: TasksComponent,
+        data: { category: 'На сьогодні' },
+      },
       {
         path: 'planned',
         component: TasksComponent,
-        data: { category: 'planned' },
+        data: { category: 'Заплановані' },
       },
 
       {
         path: '',
         pathMatch: 'full',
-        component: TasksComponent,
-        data: { category: 'notes' },
+        redirectTo: 'today',
       },
       { path: ':id', component: TasksComponent, data: { category: 'id' } },
     ],
