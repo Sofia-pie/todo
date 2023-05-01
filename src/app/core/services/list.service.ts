@@ -20,7 +20,7 @@ export class ListService {
     return this.http.post<List>(this.apiUrl, list, { headers: this.headers });
   }
 
-  deleteList(id: number): Observable<List> {
+  deleteList(id: number): Observable<any> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<List>(url, { headers: this.headers });
   }

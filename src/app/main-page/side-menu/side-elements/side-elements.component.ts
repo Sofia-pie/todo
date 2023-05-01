@@ -13,6 +13,8 @@ export class SideElementsComponent implements OnInit {
   newListTitle: string = '';
   newListDescription: string = '';
   errorMessage: string = '';
+  showComfirmDialog = false;
+  currentList: List;
 
   constructor(private listService: ListService) {}
 
@@ -40,5 +42,18 @@ export class SideElementsComponent implements OnInit {
       this.newListTitle = '';
       this.newListDescription = '';
     });
+  }
+
+  onDeleteClick(list: List) {
+    this.currentList = list;
+    this.showComfirmDialog = true;
+  }
+
+  deleteList(id: number) {
+    this.listService.deleteList(id).subscribe((res) => {
+      this.lists = this.lists.filter((list) => list._id !== id);
+      console.log(res.msg);
+    });
+    this.showComfirmDialog = false;
   }
 }

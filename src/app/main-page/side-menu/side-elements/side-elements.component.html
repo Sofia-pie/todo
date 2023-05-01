@@ -18,8 +18,17 @@
 </div>
 <div class=" mt-4">
 	<div *ngFor="let list of lists" class="mt-2 px-8" [routerLink]="['./',list._id]">
-		<div *ngIf="list.title != 'Нотатки'">
-			<p>{{list.title}}</p>
+		<div *ngIf="list.title != 'Нотатки'" class="flex justify-between items-center">
+			<p>{{list.title}}</p><img src="../../../../assets/img/bin.png" class="h-4 cursor-pointer"
+				(click)="onDeleteClick(list)">
+		</div>
+
+	</div>
+	<div *ngIf="showComfirmDialog " class="mt-2 px-8">
+		<p>Видалити {{currentList.title}}</p>
+		<div class="flex justify-between">
+			<button (click)="deleteList(currentList._id!)">Так</button>
+			<button (click)="showComfirmDialog=false">Ні</button>
 		</div>
 	</div>
 	<div class="flex items-center cursor-pointer px-8 py-2"
