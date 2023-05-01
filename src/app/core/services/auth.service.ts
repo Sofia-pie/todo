@@ -40,7 +40,6 @@ export class AuthService {
           // Create a default list for the new user
           let list: List = {
             title: 'Нотатки',
-            user_id: res._id,
             tasks: [],
           };
           return this.listService.createList(list).pipe(map(() => res));

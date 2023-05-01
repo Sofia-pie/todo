@@ -6,10 +6,23 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { RouterModule } from '@angular/router';
 import { MainPageRoutingModule } from './main-page-routing.module';
+import { SideElementsComponent } from './side-menu/side-elements/side-elements.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [MainPageComponent, SideMenuComponent, TasksComponent],
-  imports: [CommonModule, SharedModule, MainPageRoutingModule, RouterModule],
+  declarations: [
+    MainPageComponent,
+    SideMenuComponent,
+    TasksComponent,
+    SideElementsComponent,
+  ],
+  imports: [
+    CommonModule,
+    SharedModule,
+    MainPageRoutingModule,
+    RouterModule,
+    FormsModule,
+  ],
   exports: [MainPageComponent],
 })
 export class MainPageModule {}

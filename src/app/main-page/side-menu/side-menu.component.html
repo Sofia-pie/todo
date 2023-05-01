@@ -1,33 +1,6 @@
 <!-- Sidebar starts -->
 <div class="w-64 absolute sm:relative border-r border-r-gray-300 bg-white sm:h-full flex-col  hidden sm:flex">
-	<div class="px-8 border-b border-b-gray-300 py-6 ">
-		<div class="flex mt-5 items-center cursor-pointer" [routerLink]="['./']">
-			<img src="../../../assets/img/Rectangle 6.png" alt="" class="max-h-6 mr-2">
-			<span>Нотатки</span>
-		</div>
-		<div class="flex mt-5 items-center cursor-pointer" [routerLink]="['./today']">
-			<img src="../../../assets/img/Rectangle 17.png" alt="" class="max-h-6 mr-2">
-			<span>На сьогодні</span>
-		</div>
-		<div class="flex mt-5 items-center cursor-pointer" [routerLink]="['./planned']">
-			<img src="../../../assets/img/Rectangle 8.png" alt="" class="max-h-6 mr-2">
-			<span>Заплановані</span>
-		</div>
-		<div class="flex mt-5 items-center cursor-pointer" [routerLink]="['./important']">
-			<img src="../../../assets/img/Rectangle 7.png" alt="" class="max-h-6 mr-2">
-			<span>Важливі</span>
-		</div>
-	</div>
-	<div class="px-8 mt-4">
-		<p *ngFor="let list of lists" class="mt-2" [routerLink]="['./',list._id]">
-			{{list.title}}
-		</p>
-		<div class="flex items-center cursor-pointer">
-			<img src="../../../assets/img/Rectangle 18.png" alt="" class="max-h-5 mr-2">
-			<span>Створити список</span>
-		</div>
-
-	</div>
+	<app-side-elements></app-side-elements>
 </div>
 <!-- button -->
 <div
@@ -50,38 +23,11 @@
 			<line x1="6" y1="6" x2="18" y2="18" />
 		</svg>
 	</div>
-	<div class="px-8">
+	<div>
 		<!-- toogle-menu -->
-		<div class="px-8 border-b border-b-gray-300 py-6 ">
-			<div class="flex mt-5 items-center cursor-pointer">
-				<img src="../../../assets/img/Rectangle 6.png" alt="" class="max-h-6 mr-2">
-				<span>Нотатки</span>
-			</div>
-			<div class="flex mt-5 items-center cursor-pointer">
-				<img src="../../../assets/img/Rectangle 17.png" alt="" class="max-h-6 mr-2">
-				<span>На сьогодні</span>
-			</div>
-			<div class="flex mt-5 items-center cursor-pointer">
-				<img src="../../../assets/img/Rectangle 8.png" alt="" class="max-h-6 mr-2">
-				<span>Заплановані</span>
-			</div>
-			<div class="flex mt-5 items-center cursor-pointer">
-				<img src="../../../assets/img/Rectangle 7.png" alt="" class="max-h-6 mr-2">
-				<span>Важливі</span>
-			</div>
-		</div>
-		<div class="px-8 mt-4">
-			<p *ngFor="let list of lists" class="mt-2">
-				{{list.title}}
-			</p>
-			<div class="flex items-center cursor-pointer">
-				<img src="../../../assets/img/Rectangle 18.png" alt="" class="max-h-5 mr-2">
-				<span>Створити список</span>
-			</div>
+		<app-side-elements></app-side-elements>
 
 
-
-		</div>
 
 	</div>
 	<!-- Sidebar ends -->

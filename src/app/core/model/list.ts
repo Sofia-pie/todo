@@ -5,5 +5,4 @@ export interface List {
   title: string;
   description?: string;
   tasks: Task[];
-  user_id: number;
 }
