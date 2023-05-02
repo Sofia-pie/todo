@@ -16,6 +16,7 @@ export class TasksComponent implements OnInit {
   pageTitle: string = '';
   tasks: Task[];
   currentList: List;
+  filterType: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,20 +26,12 @@ export class TasksComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe((data) => {
+      this.filterType = data['category'];
       if (data['category'] !== 'id') {
         this.pageTitle = data['category'];
       }
     });
-    this.route.paramMap.subscribe((params) => {
-      const id = params.get('id');
-      if (id) {
-        this.listService.getListById(id).subscribe((res) => {
-          this.currentList = res;
-          this.pageTitle = this.currentList.title;
-          this.tasks = res.tasks;
-        });
-      }
-    });
+    this.filterTasks();
   }
 
   createTask(task: Task) {
@@ -62,5 +55,39 @@ export class TasksComponent implements OnInit {
         this.tasks[index].completed = true;
       }
     });
+  }
+
+  filterTasks(): void {
+    switch (this.filterType) {
+      case 'На сьогодні':
+        this.taskService
+          .getTasksForToday()
+          .subscribe((tasks) => (this.tasks = tasks));
+        break;
+      case 'Заплановані':
+        this.taskService
+          .getTasksPlanned()
+          .subscribe((tasks) => (this.tasks = tasks));
+        break;
+      case 'Важливі':
+        this.taskService
+          .getImportantTasks()
+          .subscribe((tasks) => (this.tasks = tasks));
+        break;
+      case 'id':
+        this.route.paramMap.subscribe((params) => {
+          const id = params.get('id');
+          if (id) {
+            this.listService.getListById(id).subscribe((res) => {
+              this.currentList = res;
+              this.pageTitle = this.currentList.title;
+              this.tasks = res.tasks;
+            });
+          }
+        });
+        break;
+      default:
+        this.tasks = [];
+    }
   }
 }

@@ -6,4 +6,5 @@ export interface Task {
   description?: string;
   priority: number;
   list_id: string;
+  important: boolean;
 }

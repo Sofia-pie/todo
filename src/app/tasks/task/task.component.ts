@@ -1,14 +1,7 @@
-import {
-  Component,
-  EventEmitter,
-  Inject,
-  Input,
-  LOCALE_ID,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Task } from '../../core/model/task';
 import { TaskService } from '../../core/services/task.service';
+
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',

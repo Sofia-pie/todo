@@ -21,6 +21,7 @@ import { AuthInterceptor } from './core/interceptors/authconfig.interceptor';
         disallowedRoutes: [],
       },
     }),
+
     AppRoutingModule,
     AuthModule,
     MainPageModule,

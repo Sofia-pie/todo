@@ -5,6 +5,7 @@ import { CreateTasksComponent } from './create-tasks/create-tasks.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TaskComponent } from './task/task.component';
 import { SharedModule } from '../shared/shared.module';
+import { MomentModule } from 'ngx-moment';
 
 @NgModule({
   declarations: [TasksComponent, CreateTasksComponent, TaskComponent],

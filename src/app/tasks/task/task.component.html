@@ -7,7 +7,7 @@
 		<img src="../../../../assets/img/bin.png" class="h-4 cursor-pointer ml-auto" (click)="onDeleteClick()">
 	</div>
 	<div class="pt-2 flex justify-between">
-		<p>{{task.due_date | date:'shortDate'}}</p>
+		<p>Термін: до {{ task.due_date | date:'d MMMM y' }} ({{ task.due_date}})</p>
 		<p [ngClass]="{'text-red-600': task.priority === 1}">Пріоритет: {{task.priority | priorityLevel}}</p>
 		<div><img src="../../../assets/img/comment.png" alt="" class="h-5" (click)="showComments=!showComments">
 		</div>
