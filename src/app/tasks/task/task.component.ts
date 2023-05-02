@@ -20,6 +20,7 @@ export class TaskComponent implements OnInit {
   showComfirmDialog = false;
   showComments = false;
   @Output() deleteTask: EventEmitter<Task> = new EventEmitter();
+  @Output() checkTaskDone: EventEmitter<Task> = new EventEmitter();
 
   constructor(private taskService: TaskService) {}
 
@@ -33,5 +34,10 @@ export class TaskComponent implements OnInit {
 
   deleteTaskConfirm() {
     this.deleteTask.emit(this.task);
+  }
+
+  onCheckClick() {
+    this.isChecked = true;
+    this.checkTaskDone.emit(this.task);
   }
 }

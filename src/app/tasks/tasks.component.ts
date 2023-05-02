@@ -53,4 +53,14 @@ export class TasksComponent implements OnInit {
       this.tasks = this.tasks.filter((t) => t._id !== task._id);
     });
   }
+  checkTaskDone(task: Task) {
+    task.completed = true;
+    this.taskService.updateTask(task._id!, task).subscribe((res) => {
+      console.log(res);
+      const index = this.tasks.findIndex((t) => t._id === task._id);
+      if (index !== -1) {
+        this.tasks[index].completed = true;
+      }
+    });
+  }
 }

@@ -1,6 +1,6 @@
 <div class="bg-white rounded-lg border border-gray-300  shadow-md py-3 px-5 ">
 	<div class="border-b border-b-gray-200 flex items-center gap-4 pb-2">
-		<div class="rounded-full border border-black w-5 h-5 cursor-pointer" (click)="isChecked = true"
+		<div class="rounded-full border border-black w-5 h-5 cursor-pointer" (click)="onCheckClick()"
 			[ngClass]="{'checked': isChecked}"></div>
 		<p [ngClass]="{'line-through': isChecked}">{{task.title}}</p>
 
@@ -12,14 +12,14 @@
 		<div><img src="../../../assets/img/comment.png" alt="" class="h-5" (click)="showComments=!showComments">
 		</div>
 	</div>
-	<div class="mt-2 px-8 pr-4 border-t border-t-gray-200" *ngIf="showComments && task.description">
+	<div class="mt-2 px-8 pr-4 border-t border-t-gray-200 cursor-pointer" *ngIf="showComments && task.description">
 		<p>{{task.description}}</p>
 	</div>
 
 	<div *ngIf="showComfirmDialog " class="mt-2 px-8 border-t border-t-gray-200">
 		<p>Видалити {{task.title}}</p>
 		<div class="flex justify-around">
-			<button (click)="deleteTaskConfirm()">Так</button>
+			<button class="text-red-500" (click)="deleteTaskConfirm()">Так</button>
 			<button (click)="showComfirmDialog=false">Ні</button>
 		</div>
 	</div>
