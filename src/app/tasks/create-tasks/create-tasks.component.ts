@@ -22,7 +22,7 @@ export class CreateTasksComponent implements OnInit {
       due_date: ['', Validators.required],
       completed: [false],
       description: [''],
-      priority: [1],
+      priority: [1, Validators.required],
       list_id: [''],
     });
   }
@@ -34,6 +34,7 @@ export class CreateTasksComponent implements OnInit {
 
       this.createTask.emit(task);
       this.taskForm.reset();
+      this.taskForm.get('priority')?.setValue(1);
     }
   }
 }

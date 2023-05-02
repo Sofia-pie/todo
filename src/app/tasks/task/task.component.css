@@ -1,0 +1,6 @@
+.checked {
+  background-image: url("src/assets/img/check.png");
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
