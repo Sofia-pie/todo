@@ -5,7 +5,10 @@ import { CreateTasksComponent } from './create-tasks/create-tasks.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TaskComponent } from './task/task.component';
 import { SharedModule } from '../shared/shared.module';
-import { MomentModule } from 'ngx-moment';
+import { registerLocaleData } from '@angular/common';
+import localeUk from '@angular/common/locales/uk';
+
+registerLocaleData(localeUk);
 
 @NgModule({
   declarations: [TasksComponent, CreateTasksComponent, TaskComponent],
