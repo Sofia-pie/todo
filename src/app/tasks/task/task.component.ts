@@ -14,6 +14,7 @@ export class TaskComponent implements OnInit {
   showComments = false;
   @Output() deleteTask: EventEmitter<Task> = new EventEmitter();
   @Output() checkTaskDone: EventEmitter<Task> = new EventEmitter();
+  @Output() markImportant: EventEmitter<Task> = new EventEmitter();
 
   constructor(private taskService: TaskService) {}
 
@@ -32,5 +33,10 @@ export class TaskComponent implements OnInit {
   onCheckClick() {
     this.isChecked = true;
     this.checkTaskDone.emit(this.task);
+  }
+
+  onImportantClick() {
+    this.task.important = true;
+    this.markImportant.emit(this.task);
   }
 }

@@ -18,12 +18,9 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.inputSubject
-      .pipe(debounceTime(2000)) // delay the emission of values by 2 seconds
-      .subscribe(() => {
-        // handle the search term submission here
-        this.search(this.searchInput);
-      });
+    this.inputSubject.pipe(debounceTime(1500)).subscribe(() => {
+      this.search(this.searchInput);
+    });
   }
 
   onDropdownClick() {

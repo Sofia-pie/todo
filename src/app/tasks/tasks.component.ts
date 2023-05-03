@@ -57,6 +57,16 @@ export class TasksComponent implements OnInit {
     });
   }
 
+  markTaskImportant(task: Task) {
+    this.taskService.updateTask(task._id!, task).subscribe((res) => {
+      console.log(res);
+      const index = this.tasks.findIndex((t) => t._id === task._id);
+      if (index !== -1) {
+        this.tasks[index].important = true;
+      }
+    });
+  }
+
   filterTasks(): void {
     switch (this.filterType) {
       case 'На сьогодні':

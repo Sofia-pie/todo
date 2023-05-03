@@ -6,8 +6,8 @@
 		</ng-container>
 		<div class="flex flex-col gap-4 mt-4">
 			<div *ngFor="let task of tasks">
-				<app-task [task]="task" (deleteTask)="deleteTask($event)"
-					(checkTaskDone)="checkTaskDone($event)"></app-task>
+				<app-task [task]="task" (deleteTask)="deleteTask($event)" (checkTaskDone)="checkTaskDone($event)"
+					(markImportant)="markTaskImportant($event)"></app-task>
 			</div>
 		</div>
 	</div>

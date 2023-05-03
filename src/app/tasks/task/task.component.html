@@ -3,14 +3,16 @@
 		<div class="rounded-full border border-black w-5 h-5 cursor-pointer" (click)="onCheckClick()"
 			[ngClass]="{'checked': isChecked}"></div>
 		<p [ngClass]="{'line-through': isChecked}">{{task.title}}</p>
+		<img [src]="task.important? '../../../assets/img/bookmark.png':'../../../assets/img/Rectangle 30.png'"
+			class="h-4 cursor-pointer ml-auto " (click)="onImportantClick()">
 
-		<img src="../../../../assets/img/bin.png" class="h-4 cursor-pointer ml-auto" (click)="onDeleteClick()">
 	</div>
-	<div class="pt-2 flex justify-between">
+	<div class="pt-2 flex gap-6 justify-between">
 		<p>Термін: до {{ task.due_date | date:'mediumDate':'':'uk-UA'}} </p>
 		<p [ngClass]="{'text-red-600': task.priority === 1}">Пріоритет: {{task.priority | priorityLevel}}</p>
-		<div><img src="../../../assets/img/comment.png" alt="" class="h-5" (click)="showComments=!showComments">
+		<div><img src="../../../assets/img/comment.png" class="h-5" (click)="showComments=!showComments">
 		</div>
+		<img src="../../../../assets/img/bin.png" class="h-4 cursor-pointer " (click)="onDeleteClick()">
 	</div>
 	<div class="mt-2 px-8 pr-4 border-t border-t-gray-200 cursor-pointer" *ngIf="showComments && task.description">
 		<p>{{task.description}}</p>
