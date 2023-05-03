@@ -18,6 +18,8 @@ export class TasksComponent implements OnInit {
   currentList: List;
   filterType: string;
 
+  sortOption: string;
+
   constructor(
     private route: ActivatedRoute,
     private listService: ListService,

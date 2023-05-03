@@ -1,11 +1,19 @@
 <div class="p-2 bg-gray-100  w-full h-full">
 	<h4 class="text-2xl">{{pageTitle}}</h4>
+	<div class="ml-auto w-fit md:mr-20 m2-1 mb-3">
+		<span class="mr-2">Сортування</span>
+		<select [(ngModel)]="sortOption" [ngClass]="{'w-0': sort.pristine}" name="sort" #sort="ngModel">
+			<option value="date">Дата виконання</option>
+			<option value="title">По алфавіту А-Я</option>
+			<option value="title_rev">По алфавіту Я-А</option>
+		</select>
+	</div>
 	<div class="md:mx-20 mx-0 ">
 		<ng-container *ngIf="currentList">
 			<app-create-tasks [listId]="currentList._id!" (createTask)="createTask($event)"></app-create-tasks>
 		</ng-container>
 		<div class="flex flex-col gap-4 mt-4">
-			<div *ngFor="let task of tasks">
+			<div *ngFor="let task of tasks | sortTasks: sortOption">
 				<app-task [task]="task" (deleteTask)="deleteTask($event)" (checkTaskDone)="checkTaskDone($event)"
 					(markImportant)="markTaskImportant($event)"></app-task>
 			</div>
