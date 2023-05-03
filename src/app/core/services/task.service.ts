@@ -9,7 +9,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class TaskService {
-  private apiUrl = `${environment.apiUrl}tasks`;
+  private apiUrl = `${environment.apiUrl}/tasks`;
   private headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) {}
