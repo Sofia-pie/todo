@@ -6,13 +6,12 @@ import { map, switchMap, tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { List } from '../model/list';
 import { ListService } from './list.service';
-
+import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:8080';
-  private currentUserId: string;
+  private baseUrl = `${environment.apiUrl}`;
 
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
