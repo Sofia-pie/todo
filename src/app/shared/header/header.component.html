@@ -1,7 +1,8 @@
 <div class="flex justify-between items-center h-16 border border-b-gray-300 px-5">
 	<p>Logo</p>
 	<div class="w-3/12">
-		<input type="text" class="border border-gray-300 drop-shadow-md p-1 pl-8 rounded w-full" placeholder="Пошук">
+		<input type="text" class="border border-gray-300 drop-shadow-md p-1 pl-8 rounded w-full" placeholder="Пошук"
+			[(ngModel)]="searchInput" (input)="inputSubject.next(searchInput)">
 	</div>
 	<div class="basis-12 relative cursor-pointer " (click)="onDropdownClick()"><img
 			src="../../../assets/img/Іконка користувача.png">

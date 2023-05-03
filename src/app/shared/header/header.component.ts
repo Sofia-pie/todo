@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { User } from '../../core/model/user';
 import { AuthService } from '../../core/services/auth.service';
+import { Subject, debounceTime } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,10 +12,19 @@ import { AuthService } from '../../core/services/auth.service';
 export class HeaderComponent implements OnInit {
   showMenu: boolean = false;
   @Input() user: User;
+  searchInput: string = '';
+  inputSubject = new Subject<string>();
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.inputSubject
+      .pipe(debounceTime(2000)) // delay the emission of values by 2 seconds
+      .subscribe(() => {
+        // handle the search term submission here
+        this.search(this.searchInput);
+      });
+  }
 
   onDropdownClick() {
     console.log('click');
@@ -21,5 +32,12 @@ export class HeaderComponent implements OnInit {
   }
   onLogoutClick() {
     this.authService.logout();
+  }
+  search(query: string) {
+    if (query === '') {
+      this.router.navigate(['/main']);
+      return;
+    }
+    this.router.navigate(['/main/search', { query: query }]);
   }
 }

@@ -74,6 +74,20 @@ export class TasksComponent implements OnInit {
           .getImportantTasks()
           .subscribe((tasks) => (this.tasks = tasks));
         break;
+      case 'Пошук':
+        this.taskService.getUsersTasks().subscribe((tasks) => {
+          this.route.params.subscribe((params) => {
+            const query = params['query'];
+            const results = [];
+            for (const task of tasks) {
+              if (task.title.includes(query)) {
+                results.push(task);
+              }
+            }
+            this.tasks = results;
+          });
+        });
+        break;
       case 'id':
         this.route.paramMap.subscribe((params) => {
           const id = params.get('id');

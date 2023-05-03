@@ -23,7 +23,11 @@ const authRoutes: Routes = [
         component: TasksComponent,
         data: { category: 'Заплановані' },
       },
-
+      {
+        path: 'search',
+        component: TasksComponent,
+        data: { category: 'Пошук' },
+      },
       {
         path: '',
         pathMatch: 'full',
