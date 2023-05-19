@@ -64,7 +64,7 @@ export class AuthService {
   logout() {
     let removeToken = localStorage.removeItem('access_token');
     if (removeToken == null) {
-      this.router.navigate(['sign-up']);
+      this.router.navigate(['/auth/sign-up']);
     }
   }
 
